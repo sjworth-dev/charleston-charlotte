@@ -4,25 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Russell's Road Trip | Charleston to Charlotte Panthers Game</title>
-  <meta name="description" content="Russell's drive from Charleston to Charlotte for the Panthers game.">
+  <meta name="description" content="Russell's epic drive from Charleston to Charlotte for the Panthers game.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --color-panthers-blue: #0085CA;
       --color-panthers-black: #101820;
       --color-panthers-silver: #A5ACAF;
-      --color-accent: #0085CA;
+      --color-accent: #00D4FF;
       --color-dark: #101820;
       --color-light: #f8fafc;
       --color-gray: #64748b;
-      --gradient-hero: linear-gradient(135deg, #101820 0%, #0085CA 100%);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
     }
 
     * {
@@ -37,214 +33,443 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--color-light);
-      color: var(--color-dark);
+      background: var(--color-dark);
+      color: white;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      background: var(--gradient-hero);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #101820 0%, #0a1628 50%, #101820 100%);
     }
 
-    .hero::before {
+    .animated-bg::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background:
+        radial-gradient(circle at 20% 80%, rgba(0, 133, 202, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 133, 202, 0.05) 0%, transparent 30%);
+      animation: pulse-bg 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-bg {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--color-panthers-blue);
+      border-radius: 50%;
+      animation: float-up 15s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes float-up {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 133, 202, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: glow-pulse 4s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
       text-align: center;
-      color: white;
       padding: 2rem;
-      max-width: 900px;
+      max-width: 1000px;
+    }
+
+    .hero-icon {
+      font-size: 6rem;
+      animation: bounce-in 1s ease-out, icon-pulse 2s ease-in-out infinite 1s;
+      filter: drop-shadow(0 0 30px rgba(0, 133, 202, 0.5));
+    }
+
+    @keyframes bounce-in {
+      0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+      60% { transform: scale(1.2) rotate(10deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes icon-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     .hero-badge {
       display: inline-block;
-      background: rgba(0, 133, 202, 0.3);
+      background: linear-gradient(135deg, rgba(0, 133, 202, 0.3), rgba(0, 212, 255, 0.2));
       backdrop-filter: blur(10px);
-      padding: 0.5rem 1.25rem;
+      padding: 0.75rem 2rem;
       border-radius: 50px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(0, 133, 202, 0.5);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+      border: 2px solid var(--color-panthers-blue);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
+      animation: slide-up 0.8s ease-out 0.3s both;
+      box-shadow: 0 0 30px rgba(0, 133, 202, 0.3);
     }
 
     .hero h1 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 700;
       margin-bottom: 1rem;
-      line-height: 1.1;
+      line-height: 1;
       text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: var(--color-panthers-blue);
+      animation: slide-up 0.8s ease-out 0.5s both;
+      background: linear-gradient(135deg, #ffffff 0%, #0085CA 50%, #00D4FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 30px rgba(0, 133, 202, 0.3));
     }
 
     .hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       opacity: 0.9;
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 3rem;
+      animation: slide-up 0.8s ease-out 0.7s both;
+    }
+
+    @keyframes slide-up {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 3rem;
+      gap: 4rem;
       flex-wrap: wrap;
+      animation: slide-up 0.8s ease-out 0.9s both;
     }
 
     .hero-stat {
       text-align: center;
+      position: relative;
+    }
+
+    .hero-stat::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: var(--color-panthers-blue);
+      border-radius: 2px;
     }
 
     .hero-stat-number {
-      font-size: 3.5rem;
-      font-weight: 800;
+      font-family: 'Oswald', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
       line-height: 1;
       display: block;
+      color: var(--color-accent);
+      text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
     }
 
     .hero-stat-label {
-      font-size: 0.875rem;
-      opacity: 0.8;
+      font-size: 0.8rem;
+      opacity: 0.7;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       margin-top: 0.5rem;
     }
 
-    .panther-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
     }
 
-    /* Main Content */
+    .scroll-indicator span {
+      display: block;
+      width: 30px;
+      height: 50px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 25px;
+      position: relative;
+    }
+
+    .scroll-indicator span::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--color-panthers-blue);
+      border-radius: 50%;
+      animation: scroll-dot 2s infinite;
+    }
+
+    @keyframes scroll-dot {
+      0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Container */
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
 
     section {
-      padding: 5rem 0;
+      padding: 6rem 0;
+      position: relative;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     .section-header h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--color-dark);
-      margin-bottom: 0.75rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
       text-transform: uppercase;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #0085CA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .section-header p {
-      color: var(--color-gray);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
+      color: var(--color-panthers-silver);
+      font-size: 1.2rem;
     }
 
-    /* Russell Card */
+    /* Russell Section */
     .russell-section {
-      background: white;
-      padding: 4rem 0;
+      padding: 8rem 0;
     }
 
     .russell-card {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 3rem;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
       align-items: center;
-      background: linear-gradient(135deg, var(--color-panthers-black) 0%, #1a2a3a 100%);
-      border-radius: 20px;
-      padding: 3rem;
-      color: white;
-      box-shadow: var(--shadow-xl);
+      background: linear-gradient(135deg, rgba(0, 133, 202, 0.1), rgba(16, 24, 32, 0.9));
+      border-radius: 30px;
+      padding: 4rem;
+      border: 1px solid rgba(0, 133, 202, 0.3);
+      box-shadow: 0 0 60px rgba(0, 133, 202, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .russell-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(0, 133, 202, 0.1), transparent 30%);
+      animation: rotate-glow 10s linear infinite;
+    }
+
+    @keyframes rotate-glow {
+      100% { transform: rotate(360deg); }
+    }
+
+    .russell-photo-container {
+      position: relative;
+      z-index: 1;
     }
 
     .russell-photo {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
       border-radius: 50%;
-      border: 4px solid var(--color-panthers-blue);
       object-fit: cover;
-      box-shadow: var(--shadow-lg);
+      border: 4px solid var(--color-panthers-blue);
+      box-shadow: 0 0 40px rgba(0, 133, 202, 0.5);
+      animation: photo-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes photo-glow {
+      0%, 100% { box-shadow: 0 0 40px rgba(0, 133, 202, 0.5); }
+      50% { box-shadow: 0 0 60px rgba(0, 133, 202, 0.8), 0 0 100px rgba(0, 212, 255, 0.3); }
+    }
+
+    .russell-photo-ring {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px dashed var(--color-panthers-blue);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .russell-info {
+      position: relative;
+      z-index: 1;
     }
 
     .russell-info h3 {
-      font-size: 2rem;
-      font-weight: 800;
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
     }
 
     .russell-info .subtitle {
       color: var(--color-panthers-blue);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .russell-info p {
+      font-size: 1.1rem;
       opacity: 0.9;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    /* Route Card */
-    .route-visual {
-      background: white;
-      border-radius: 16px;
-      padding: 3rem;
-      box-shadow: var(--shadow-xl);
-      margin-bottom: 4rem;
-      border: 3px solid var(--color-panthers-blue);
+    /* Animated Route */
+    .route-section {
+      padding: 8rem 0;
+      position: relative;
     }
 
-    .route-line {
+    .route-container {
+      background: linear-gradient(135deg, rgba(16, 24, 32, 0.95), rgba(0, 133, 202, 0.1));
+      border-radius: 30px;
+      padding: 4rem;
+      border: 1px solid rgba(0, 133, 202, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .route-map {
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: relative;
-      padding: 2rem 0;
+      padding: 3rem 0;
     }
 
-    .route-line::before {
-      content: '';
+    .route-line {
       position: absolute;
       top: 50%;
       left: 15%;
       right: 15%;
-      height: 4px;
+      height: 6px;
       background: linear-gradient(90deg, var(--color-panthers-black), var(--color-panthers-blue));
-      border-radius: 2px;
+      border-radius: 3px;
       transform: translateY(-50%);
+      overflow: hidden;
+    }
+
+    .route-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.8), transparent);
+      animation: route-pulse 3s linear infinite;
+    }
+
+    @keyframes route-pulse {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .route-car {
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      animation: drive 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+      z-index: 2;
+    }
+
+    @keyframes drive {
+      0%, 100% { left: 15%; }
+      50% { left: calc(85% - 40px); }
     }
 
     .route-city {
@@ -254,92 +479,121 @@
     }
 
     .route-city-dot {
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       background: var(--color-panthers-black);
-      border: 4px solid white;
+      border: 4px solid var(--color-panthers-blue);
       border-radius: 50%;
       margin: 0 auto 1rem;
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 0 20px rgba(0, 133, 202, 0.5);
+      animation: dot-pulse 2s ease-in-out infinite;
     }
 
     .route-city:last-child .route-city-dot {
       background: var(--color-panthers-blue);
+      animation-delay: 1s;
+    }
+
+    @keyframes dot-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 133, 202, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(0, 133, 202, 0.8), 0 0 60px rgba(0, 212, 255, 0.4); }
     }
 
     .route-city-name {
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--color-dark);
+      font-size: 1.5rem;
+      text-transform: uppercase;
     }
 
     .route-city-state {
-      color: var(--color-gray);
-      font-size: 0.875rem;
+      color: var(--color-panthers-silver);
+      font-size: 0.9rem;
     }
 
-    .route-middle {
+    .route-info {
       text-align: center;
       position: relative;
       z-index: 1;
-      background: white;
-      padding: 0 1.5rem;
+      background: var(--color-dark);
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      border: 2px solid var(--color-panthers-blue);
     }
 
-    .route-middle-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .route-middle-distance {
+    .route-info-icon {
       font-size: 2rem;
-      font-weight: 800;
-      color: var(--color-panthers-black);
     }
 
-    .route-middle-label {
-      font-size: 0.75rem;
-      color: var(--color-gray);
+    .route-info-distance {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    .route-info-label {
+      font-size: 0.8rem;
+      color: var(--color-panthers-silver);
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
 
-    /* Drive Details */
+    /* Drive Cards */
     .drive-section {
-      background: var(--color-panthers-black);
-      color: white;
-    }
-
-    .drive-section .section-header h2 {
-      color: white;
-    }
-
-    .drive-section .section-header p {
-      color: rgba(255,255,255,0.7);
+      padding: 8rem 0;
     }
 
     .drive-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
 
     .drive-card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px;
-      padding: 2rem;
-      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(180deg, rgba(0, 133, 202, 0.1), rgba(16, 24, 32, 0.9));
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(0, 133, 202, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .drive-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-panthers-blue), var(--color-accent));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .drive-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 133, 202, 0.3);
+      border-color: var(--color-panthers-blue);
+    }
+
+    .drive-card:hover::before {
+      transform: scaleX(1);
     }
 
     .drive-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
     }
 
     .drive-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
     }
 
     .drive-card ul {
@@ -347,242 +601,294 @@
     }
 
     .drive-card li {
-      padding: 0.5rem 0;
+      padding: 0.75rem 0;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      opacity: 0.9;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .drive-card li:hover {
+      padding-left: 10px;
+      color: var(--color-accent);
+    }
+
+    .drive-card li:last-child {
+      border-bottom: none;
     }
 
     .drive-card li::before {
       content: '>';
       color: var(--color-panthers-blue);
       font-weight: bold;
+      font-size: 1.2rem;
     }
 
-    /* Game Day */
+    /* Game Day Stadium */
     .gameday-section {
-      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 8rem 0;
+      position: relative;
     }
 
-    .gameday-card {
-      background: white;
-      border-radius: 16px;
-      padding: 3rem;
+    .stadium-card {
+      background: linear-gradient(135deg, rgba(0, 133, 202, 0.2), rgba(16, 24, 32, 0.95));
+      border-radius: 30px;
+      padding: 4rem;
       text-align: center;
-      box-shadow: var(--shadow-xl);
-      border-top: 6px solid var(--color-panthers-blue);
+      border: 2px solid var(--color-panthers-blue);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0, 133, 202, 0.3);
     }
 
-    .gameday-card h3 {
-      font-size: 2rem;
-      font-weight: 800;
+    .stadium-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at top, rgba(0, 133, 202, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .stadium-icon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      animation: bounce-in 1s ease-out;
+      display: block;
+    }
+
+    .stadium-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      position: relative;
     }
 
-    .gameday-card .stadium {
-      font-size: 1.25rem;
+    .stadium-name {
+      font-size: 1.3rem;
       color: var(--color-panthers-blue);
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .gameday-tips {
+    .stadium-features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
-      margin-top: 2rem;
-      text-align: left;
+      margin-top: 3rem;
+      position: relative;
     }
 
-    .gameday-tip {
-      background: var(--color-light);
-      padding: 1.25rem;
-      border-radius: 8px;
+    .feature {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 133, 202, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .gameday-tip h4 {
-      font-size: 0.9rem;
-      font-weight: 700;
+    .feature:hover {
+      transform: scale(1.05);
+      border-color: var(--color-panthers-blue);
+      box-shadow: 0 10px 40px rgba(0, 133, 202, 0.3);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .feature h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
       margin-bottom: 0.5rem;
-      color: var(--color-panthers-black);
     }
 
-    .gameday-tip p {
+    .feature p {
       font-size: 0.85rem;
-      color: var(--color-gray);
+      color: var(--color-panthers-silver);
       margin: 0;
+    }
+
+    /* Keep Pounding Section */
+    .keep-pounding-section {
+      padding: 10rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .keep-pounding-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(4rem, 15vw, 10rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff, #0085CA, #00D4FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: text-glow 3s ease-in-out infinite;
+      line-height: 1;
+    }
+
+    @keyframes text-glow {
+      0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 133, 202, 0.5)); }
+      50% { filter: drop-shadow(0 0 40px rgba(0, 133, 202, 0.8)) drop-shadow(0 0 80px rgba(0, 212, 255, 0.4)); }
+    }
+
+    .keep-pounding-sub {
+      font-size: 1.5rem;
+      color: var(--color-panthers-silver);
+      margin-top: 2rem;
     }
 
     /* Footer */
     footer {
-      background: var(--color-panthers-black);
-      color: white;
+      background: rgba(0, 0, 0, 0.5);
       text-align: center;
-      padding: 3rem 1.5rem;
+      padding: 3rem;
+      border-top: 1px solid rgba(0, 133, 202, 0.2);
     }
 
     footer p {
-      opacity: 0.7;
-      font-size: 0.875rem;
-    }
-
-    .keep-pounding {
-      font-size: 1.5rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      color: var(--color-panthers-blue);
+      color: var(--color-panthers-silver);
+      font-size: 0.9rem;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .hero {
-        min-height: auto;
-        padding: 5rem 0 4rem;
+    @media (max-width: 968px) {
+      .drive-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-content {
-        padding: 1.5rem;
-      }
-
-      .hero-badge {
-        font-size: 0.7rem;
-        padding: 0.4rem 1rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .hero-stats {
-        gap: 1.5rem;
-      }
-
-      .hero-stat-number {
-        font-size: 2rem;
-      }
-
-      .hero-stat-label {
-        font-size: 0.7rem;
-      }
-
-      .panther-icon {
-        font-size: 3rem;
-      }
-
-      .section-header h2 {
-        font-size: 1.5rem;
-      }
-
-      .section-header p {
-        font-size: 1rem;
+      .stadium-features {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .russell-card {
         grid-template-columns: 1fr;
         text-align: center;
         padding: 2rem;
-        gap: 1.5rem;
+      }
+
+      .russell-photo-container {
+        display: flex;
+        justify-content: center;
       }
 
       .russell-photo {
-        width: 150px;
-        height: 150px;
-        margin: 0 auto;
-      }
-
-      .russell-info h3 {
-        font-size: 1.5rem;
-      }
-
-      .route-visual {
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-      }
-
-      .route-line {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 1rem 0;
-      }
-
-      .route-line::before {
-        display: none;
-      }
-
-      .route-middle {
-        background: var(--color-light);
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        order: -1;
-      }
-
-      .drive-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .drive-card {
-        padding: 1.5rem;
-      }
-
-      .gameday-card {
-        padding: 2rem 1.5rem;
-      }
-
-      .gameday-card h3 {
-        font-size: 1.5rem;
-      }
-
-      .gameday-tips {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 3rem 0;
-      }
-
-      footer {
-        padding: 2rem 1rem;
+        width: 180px;
+        height: 180px;
       }
     }
 
-    @media (max-width: 380px) {
-      .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
       }
 
-      .hero-stat {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
+      .hero-stats {
+        gap: 2rem;
       }
 
       .hero-stat-number {
-        font-size: 1.75rem;
+        font-size: 2.5rem;
       }
 
-      .hero-stat-label {
-        margin-top: 0;
+      .hero-icon {
+        font-size: 4rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+      }
+
+      .route-map {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .route-line {
+        display: none;
+      }
+
+      .route-car {
+        display: none;
+      }
+
+      .route-info {
+        order: -1;
+      }
+
+      .stadium-features {
+        grid-template-columns: 1fr;
+      }
+
+      .stadium-card {
+        padding: 2rem;
+      }
+
+      .stadium-card h3 {
+        font-size: 2rem;
+      }
+
+      .keep-pounding-text {
+        font-size: 3rem;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      .container {
+        padding: 0 1rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    <div class="particle" style="left: 15%; animation-delay: 6s;"></div>
+    <div class="particle" style="left: 25%; animation-delay: 7s;"></div>
+    <div class="particle" style="left: 75%; animation-delay: 8s;"></div>
+    <div class="particle" style="left: 85%; animation-delay: 9s;"></div>
+    <div class="particle" style="left: 45%; animation-delay: 10s;"></div>
+    <div class="particle" style="left: 55%; animation-delay: 11s;"></div>
+  </div>
+
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="panther-icon">🐆</div>
+      <div class="hero-icon">🐆</div>
       <div class="hero-badge">Game Day Road Trip</div>
-      <h1>Russell's Drive to <span>Charlotte</span></h1>
+      <h1>Russell's Drive to Charlotte</h1>
       <p class="hero-subtitle">From Charleston to Bank of America Stadium for the Panthers game</p>
 
       <div class="hero-stats">
@@ -596,9 +902,13 @@
         </div>
         <div class="hero-stat">
           <span class="hero-stat-number">1</span>
-          <div class="hero-stat-label">Panthers Fan</div>
+          <div class="hero-stat-label">Epic Trip</div>
         </div>
       </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span></span>
     </div>
   </section>
 
@@ -606,31 +916,42 @@
   <section class="russell-section">
     <div class="container">
       <div class="russell-card">
-        <img src="russell.png" alt="Russell" class="russell-photo">
+        <div class="russell-photo-container">
+          <div class="russell-photo-ring"></div>
+          <img src="russell.png" alt="Russell" class="russell-photo">
+        </div>
         <div class="russell-info">
           <h3>The Driver: Russell</h3>
           <p class="subtitle">Charleston to Charlotte | Panthers Game Day</p>
-          <p>Making the 3.5 hour drive from Charleston up I-26 and I-77 to catch the Panthers at Bank of America Stadium. No flights, no buses—just Russell, his car, and the open road to Charlotte.</p>
+          <p>Making the legendary 3.5 hour drive from Charleston up I-26 and I-77 to catch the Panthers at Bank of America Stadium. No flights, no buses—just Russell, his car, and the open road to Charlotte. This is what being a true fan looks like.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Route Visualization -->
-  <section>
+  <!-- Animated Route -->
+  <section class="route-section">
     <div class="container">
-      <div class="route-visual">
-        <div class="route-line">
+      <div class="section-header">
+        <h2>The Route</h2>
+        <p>209 miles of pure Panthers dedication</p>
+      </div>
+
+      <div class="route-container">
+        <div class="route-map">
           <div class="route-city">
             <div class="route-city-dot"></div>
             <div class="route-city-name">Charleston</div>
             <div class="route-city-state">South Carolina</div>
           </div>
 
-          <div class="route-middle">
-            <div class="route-middle-icon">🚗</div>
-            <div class="route-middle-distance">209 mi</div>
-            <div class="route-middle-label">I-26 W → I-77 N</div>
+          <div class="route-line"></div>
+          <div class="route-car">🚗</div>
+
+          <div class="route-info">
+            <div class="route-info-icon">🛣️</div>
+            <div class="route-info-distance">209 mi</div>
+            <div class="route-info-label">I-26 W → I-77 N</div>
           </div>
 
           <div class="route-city">
@@ -647,13 +968,13 @@
   <section class="drive-section">
     <div class="container">
       <div class="section-header">
-        <h2>The Drive</h2>
-        <p>Russell's route from Charleston to Bank of America Stadium</p>
+        <h2>The Game Plan</h2>
+        <p>Everything Russell needs for the perfect road trip</p>
       </div>
 
       <div class="drive-grid">
         <div class="drive-card">
-          <div class="drive-card-icon">🛣️</div>
+          <span class="drive-card-icon">🛣️</span>
           <h3>The Route</h3>
           <ul>
             <li>Head out of Charleston on I-26 West</li>
@@ -664,71 +985,141 @@
         </div>
 
         <div class="drive-card">
-          <div class="drive-card-icon">⏱️</div>
+          <span class="drive-card-icon">⏱️</span>
           <h3>Timing</h3>
           <ul>
             <li>Total drive: 3 - 3.5 hours</li>
-            <li>Leave early to avoid traffic</li>
+            <li>Leave early for best parking</li>
             <li>I-77 gets busy near Charlotte</li>
             <li>Game day = extra congestion</li>
           </ul>
         </div>
 
         <div class="drive-card">
-          <div class="drive-card-icon">⛽</div>
+          <span class="drive-card-icon">⛽</span>
           <h3>Pit Stops</h3>
           <ul>
             <li>Fill up in SC (cheaper gas)</li>
-            <li>Columbia good for food break</li>
+            <li>Columbia for food break</li>
             <li>Rest stops along I-77</li>
-            <li>Top off before stadium area</li>
+            <li>Top off before stadium</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Game Day Section -->
+  <!-- Game Day Stadium -->
   <section class="gameday-section">
     <div class="container">
-      <div class="section-header">
-        <h2>Game Day</h2>
-        <p>Panthers football at Bank of America Stadium</p>
-      </div>
+      <div class="stadium-card">
+        <span class="stadium-icon">🏟️</span>
+        <h3>The Destination</h3>
+        <p class="stadium-name">Bank of America Stadium • Charlotte, NC</p>
+        <p>After 209 miles and 3.5 hours of pure dedication, Russell arrives at the home of the Carolina Panthers. Time to witness greatness.</p>
 
-      <div class="gameday-card">
-        <h3>🏈 Bank of America Stadium</h3>
-        <p class="stadium">800 S Mint St, Charlotte, NC</p>
-        <p>Russell's destination—home of the Carolina Panthers. After the 3.5 hour drive from Charleston, it's time for some football.</p>
-
-        <div class="gameday-tips">
-          <div class="gameday-tip">
+        <div class="stadium-features">
+          <div class="feature">
+            <span class="feature-icon">🅿️</span>
             <h4>Parking</h4>
-            <p>Arrive 2-3 hours early for best parking. Lots fill up fast on game day.</p>
+            <p>Arrive 2-3 hours early for best spots</p>
           </div>
-          <div class="gameday-tip">
+          <div class="feature">
+            <span class="feature-icon">🍖</span>
             <h4>Tailgating</h4>
-            <p>Lots open 4 hours before kickoff. Bring your grill and Panthers gear.</p>
+            <p>Lots open 4 hours before kickoff</p>
           </div>
-          <div class="gameday-tip">
-            <h4>After the Game</h4>
-            <p>Expect 30-45 min to get out of the parking area. Patience is key.</p>
+          <div class="feature">
+            <span class="feature-icon">🏈</span>
+            <h4>Game Time</h4>
+            <p>Panthers football at its finest</p>
           </div>
-          <div class="gameday-tip">
-            <h4>The Drive Back</h4>
-            <p>Another 3.5 hours home. Worth it to see the Panthers play.</p>
+          <div class="feature">
+            <span class="feature-icon">🚗</span>
+            <h4>Drive Home</h4>
+            <p>Another 3.5 hrs—worth every mile</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Keep Pounding -->
+  <section class="keep-pounding-section">
+    <div class="container">
+      <div class="keep-pounding-text">Keep Pounding</div>
+      <p class="keep-pounding-sub">Safe travels, Russell. Go Panthers. 🐆</p>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <p class="keep-pounding">Keep Pounding</p>
-      <p>Safe travels, Russell. Go Panthers.</p>
-    </div>
+    <p>Russell's Epic Road Trip • Charleston to Charlotte • Panthers Game Day</p>
   </footer>
+
+  <script>
+    // Add more particles dynamically
+    const particlesContainer = document.querySelector('.particles');
+    for (let i = 0; i < 10; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.width = (Math.random() * 4 + 2) + 'px';
+      particle.style.height = particle.style.width;
+      particlesContainer.appendChild(particle);
+    }
+
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.drive-card, .feature, .russell-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Counter animation for stats
+    const animateValue = (element, start, end, duration) => {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = end % 1 !== 0 ? value + (progress === 1 ? '.5' : '') : value;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    // Trigger counter animation when hero is visible
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stats = document.querySelectorAll('.hero-stat-number');
+          animateValue(stats[0], 0, 209, 2000);
+          animateValue(stats[1], 0, 3, 2000);
+          heroObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    heroObserver.observe(document.querySelector('.hero'));
+  </script>
 </body>
 </html>
