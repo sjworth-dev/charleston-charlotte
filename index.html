@@ -1054,6 +1054,165 @@
       margin-bottom: 1rem;
     }
 
+    /* Face Recognition Modal */
+    .face-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(16, 24, 32, 0.98);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .face-modal-content {
+      background: linear-gradient(135deg, rgba(0, 133, 202, 0.2), rgba(16, 24, 32, 0.95));
+      border: 2px solid var(--color-panthers-blue);
+      border-radius: 30px;
+      padding: 3rem;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 0 100px rgba(0, 133, 202, 0.5);
+    }
+
+    .face-panthers {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: panther-jump 1.5s ease-in-out infinite;
+    }
+
+    .face-modal-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff, #0085CA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .face-modal-content p {
+      color: var(--color-panthers-silver);
+      margin-bottom: 1.5rem;
+    }
+
+    .face-video-container {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 1.5rem;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid var(--color-panthers-blue);
+      box-shadow: 0 0 30px rgba(0, 133, 202, 0.3);
+    }
+
+    #face-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: scaleX(-1);
+    }
+
+    #face-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(-1);
+    }
+
+    .face-status {
+      font-size: 1.1rem;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+      min-height: 1.5em;
+    }
+
+    .face-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .face-btn {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .face-btn.yes-btn {
+      background: linear-gradient(135deg, var(--color-panthers-blue), var(--color-accent));
+      color: white;
+    }
+
+    .face-btn.yes-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 133, 202, 0.5);
+    }
+
+    .face-btn.no-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .face-btn.no-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .russell-welcome, .visitor-welcome {
+      animation: scaleIn 0.5s ease;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .welcome-panthers {
+      font-size: 3rem;
+      margin: 1rem 0;
+      animation: panther-jump 1s ease-in-out infinite;
+    }
+
+    .russell-welcome h2 {
+      font-size: 3rem;
+      color: var(--color-accent);
+      -webkit-text-fill-color: var(--color-accent);
+      animation: text-glow 1s ease-in-out infinite;
+    }
+
+    /* Russell Mode - Extra Panthers */
+    body.russell-mode .floating-panther {
+      opacity: 0.3;
+      animation-duration: 10s;
+    }
+
+    body.russell-mode .hero-panther {
+      animation-duration: 0.8s;
+    }
+
     /* Responsive */
     @media (max-width: 968px) {
       .drive-grid,
@@ -1186,6 +1345,28 @@
   </style>
 </head>
 <body>
+  <!-- Face Recognition Modal -->
+  <div id="face-modal" class="face-modal">
+    <div class="face-modal-content">
+      <div class="face-panthers">🐆🐆🐆</div>
+      <h2>ARE YOU RUSSELL?</h2>
+      <p>Let's verify your Panthers fan status</p>
+
+      <div class="face-video-container">
+        <video id="face-video" autoplay muted playsinline></video>
+        <canvas id="face-canvas"></canvas>
+        <img id="russell-reference" src="russell.png" crossorigin="anonymous" style="display:none;">
+      </div>
+
+      <p id="face-status" class="face-status">Initializing...</p>
+
+      <div class="face-buttons">
+        <button onclick="skipRecognition(true)" class="face-btn yes-btn">Yes, I'm Russell! 🐆</button>
+        <button onclick="skipRecognition(false)" class="face-btn no-btn">No, just a fan</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Animated Background -->
   <div class="animated-bg"></div>
 
@@ -1565,7 +1746,146 @@
     <p>Russell's Epic Panthers Road Trip • Charleston to Charlotte • Keep Pounding</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
   <script>
+    // Facial Recognition Modal
+    let faceRecognitionComplete = false;
+    let russellDescriptor = null;
+
+    async function initFaceRecognition() {
+      const modal = document.getElementById('face-modal');
+      const video = document.getElementById('face-video');
+      const status = document.getElementById('face-status');
+      const canvas = document.getElementById('face-canvas');
+      const russellImg = document.getElementById('russell-reference');
+
+      modal.style.display = 'flex';
+
+      try {
+        status.textContent = 'Loading face recognition...';
+
+        // Load face-api models
+        await faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/');
+        await faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/');
+        await faceapi.nets.faceRecognitionNet.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/');
+
+        status.textContent = 'Analyzing Russell\'s photo...';
+
+        // Get Russell's face descriptor from his photo
+        const russellDetection = await faceapi.detectSingleFace(russellImg, new faceapi.TinyFaceDetectorOptions())
+          .withFaceLandmarks()
+          .withFaceDescriptor();
+
+        if (russellDetection) {
+          russellDescriptor = russellDetection.descriptor;
+          status.textContent = 'Starting camera...';
+        } else {
+          status.textContent = 'Click "Yes" or "No" below';
+          return;
+        }
+
+        // Start video
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+        video.srcObject = stream;
+        video.play();
+
+        status.textContent = 'Looking for your face...';
+
+        // Start face detection loop
+        video.addEventListener('playing', () => {
+          const displaySize = { width: video.videoWidth, height: video.videoHeight };
+          faceapi.matchDimensions(canvas, displaySize);
+
+          const detectFace = async () => {
+            if (faceRecognitionComplete) return;
+
+            const detection = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
+              .withFaceLandmarks()
+              .withFaceDescriptor();
+
+            if (detection && russellDescriptor) {
+              const distance = faceapi.euclideanDistance(detection.descriptor, russellDescriptor);
+
+              // Draw face box
+              const resizedDetection = faceapi.resizeResults(detection, displaySize);
+              canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+              faceapi.draw.drawDetections(canvas, [resizedDetection]);
+
+              // Check if it's Russell (threshold ~0.6 is typical)
+              if (distance < 0.6) {
+                faceRecognitionComplete = true;
+                status.innerHTML = '🐆 <strong>RUSSELL DETECTED!</strong> 🐆';
+                stream.getTracks().forEach(track => track.stop());
+                setTimeout(() => {
+                  welcomeRussell(true);
+                }, 1500);
+              } else {
+                status.textContent = 'Scanning... Are you Russell?';
+              }
+            }
+
+            if (!faceRecognitionComplete) {
+              requestAnimationFrame(detectFace);
+            }
+          };
+
+          detectFace();
+        });
+
+      } catch (error) {
+        console.error('Face recognition error:', error);
+        status.textContent = 'Camera unavailable. Are you Russell?';
+      }
+    }
+
+    function welcomeRussell(isRussell) {
+      faceRecognitionComplete = true;
+      const modal = document.getElementById('face-modal');
+      const video = document.getElementById('face-video');
+
+      // Stop video stream
+      if (video.srcObject) {
+        video.srcObject.getTracks().forEach(track => track.stop());
+      }
+
+      if (isRussell) {
+        // Show Russell welcome
+        modal.innerHTML = `
+          <div class="face-modal-content russell-welcome">
+            <div class="welcome-panthers">🐆🐆🐆🐆🐆</div>
+            <h2>WELCOME RUSSELL!</h2>
+            <p>The Panthers' #1 fan has arrived!</p>
+            <div class="welcome-panthers">🐆🐆🐆🐆🐆</div>
+            <button onclick="closeModal()" class="face-btn yes-btn">LET'S GO PANTHERS!</button>
+          </div>
+        `;
+        document.body.classList.add('russell-mode');
+      } else {
+        // Show visitor welcome
+        modal.innerHTML = `
+          <div class="face-modal-content visitor-welcome">
+            <div class="welcome-panthers">🐆🐆🐆</div>
+            <h2>WELCOME PANTHERS FAN!</h2>
+            <p>This site is dedicated to Russell's epic road trip to see the Panthers!</p>
+            <button onclick="closeModal()" class="face-btn">KEEP POUNDING!</button>
+          </div>
+        `;
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('face-modal').style.display = 'none';
+    }
+
+    function skipRecognition(isRussell) {
+      welcomeRussell(isRussell);
+    }
+
+    // Start face recognition when page loads
+    window.addEventListener('load', () => {
+      setTimeout(initFaceRecognition, 1000);
+    });
+
     // Add more floating panthers dynamically
     const floatingContainer = document.querySelector('.floating-panthers');
     for (let i = 0; i < 15; i++) {
