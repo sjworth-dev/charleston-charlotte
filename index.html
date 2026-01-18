@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charleston to Charlotte | Travel Time & Route Guide</title>
-  <meta name="description" content="Complete guide to traveling from Charleston, SC to Charlotte, NC. Drive times, routes, and travel tips.">
+  <title>Russell's Road Trip | Charleston to Charlotte Panthers Game</title>
+  <meta name="description" content="Russell's drive from Charleston to Charlotte for the Panthers game.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --color-primary: #1e3a5f;
-      --color-secondary: #3b82f6;
-      --color-accent: #f59e0b;
-      --color-dark: #0f172a;
+      --color-panthers-blue: #0085CA;
+      --color-panthers-black: #101820;
+      --color-panthers-silver: #A5ACAF;
+      --color-accent: #0085CA;
+      --color-dark: #101820;
       --color-light: #f8fafc;
       --color-gray: #64748b;
-      --gradient-hero: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);
-      --gradient-card: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --gradient-hero: linear-gradient(135deg, #101820 0%, #0085CA 100%);
       --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
       --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
       --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
@@ -61,7 +60,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
 
     .hero-content {
@@ -75,22 +74,29 @@
 
     .hero-badge {
       display: inline-block;
-      background: rgba(255,255,255,0.15);
+      background: rgba(0, 133, 202, 0.3);
       backdrop-filter: blur(10px);
       padding: 0.5rem 1.25rem;
       border-radius: 50px;
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(0, 133, 202, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Inter', sans-serif;
       font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--color-panthers-blue);
     }
 
     .hero-subtitle {
@@ -115,7 +121,7 @@
 
     .hero-stat-number {
       font-size: 3.5rem;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1;
       display: block;
     }
@@ -128,25 +134,9 @@
       margin-top: 0.5rem;
     }
 
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-    }
-
-    .scroll-indicator svg {
-      width: 32px;
-      height: 32px;
-      color: white;
-      opacity: 0.7;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-10px); }
-      60% { transform: translateX(-50%) translateY(-5px); }
+    .panther-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
     }
 
     /* Main Content */
@@ -166,10 +156,12 @@
     }
 
     .section-header h2 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Inter', sans-serif;
       font-size: 2.5rem;
-      color: var(--color-primary);
+      font-weight: 800;
+      color: var(--color-dark);
       margin-bottom: 0.75rem;
+      text-transform: uppercase;
     }
 
     .section-header p {
@@ -179,13 +171,60 @@
       margin: 0 auto;
     }
 
-    /* Route Visualization */
+    /* Russell Card */
+    .russell-section {
+      background: white;
+      padding: 4rem 0;
+    }
+
+    .russell-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: linear-gradient(135deg, var(--color-panthers-black) 0%, #1a2a3a 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      color: white;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .russell-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid var(--color-panthers-blue);
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .russell-info h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .russell-info .subtitle {
+      color: var(--color-panthers-blue);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .russell-info p {
+      opacity: 0.9;
+      line-height: 1.7;
+    }
+
+    /* Route Card */
     .route-visual {
       background: white;
       border-radius: 16px;
       padding: 3rem;
       box-shadow: var(--shadow-xl);
       margin-bottom: 4rem;
+      border: 3px solid var(--color-panthers-blue);
     }
 
     .route-line {
@@ -203,7 +242,7 @@
       left: 15%;
       right: 15%;
       height: 4px;
-      background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+      background: linear-gradient(90deg, var(--color-panthers-black), var(--color-panthers-blue));
       border-radius: 2px;
       transform: translateY(-50%);
     }
@@ -217,7 +256,7 @@
     .route-city-dot {
       width: 24px;
       height: 24px;
-      background: var(--color-secondary);
+      background: var(--color-panthers-black);
       border: 4px solid white;
       border-radius: 50%;
       margin: 0 auto 1rem;
@@ -225,7 +264,7 @@
     }
 
     .route-city:last-child .route-city-dot {
-      background: var(--color-accent);
+      background: var(--color-panthers-blue);
     }
 
     .route-city-name {
@@ -247,10 +286,15 @@
       padding: 0 1.5rem;
     }
 
+    .route-middle-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
     .route-middle-distance {
       font-size: 2rem;
-      font-weight: 700;
-      color: var(--color-primary);
+      font-weight: 800;
+      color: var(--color-panthers-black);
     }
 
     .route-middle-label {
@@ -260,170 +304,120 @@
       letter-spacing: 0.1em;
     }
 
-    /* Travel Options */
-    .travel-grid {
+    /* Drive Details */
+    .drive-section {
+      background: var(--color-panthers-black);
+      color: white;
+    }
+
+    .drive-section .section-header h2 {
+      color: white;
+    }
+
+    .drive-section .section-header p {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .drive-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    .travel-card {
-      background: var(--gradient-card);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .travel-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-xl);
-    }
-
-    .travel-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--color-secondary);
-    }
-
-    .travel-card:nth-child(1)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
-    .travel-card:nth-child(2)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
-    .travel-card:nth-child(3)::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
-
-    .travel-card-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .travel-card h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--color-dark);
-    }
-
-    .travel-card-time {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 1rem 0;
-    }
-
-    .travel-card-details {
-      color: var(--color-gray);
-      font-size: 0.95rem;
-    }
-
-    .travel-card-details li {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .travel-card-details li::before {
-      content: '✓';
-      color: var(--color-secondary);
-      font-weight: bold;
-    }
-
-    /* Info Section */
-    .info-section {
-      background: var(--color-primary);
-      color: white;
-    }
-
-    .info-section .section-header h2 {
-      color: white;
-    }
-
-    .info-section .section-header p {
-      color: rgba(255,255,255,0.8);
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .info-card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
+    .drive-card {
+      background: rgba(255,255,255,0.05);
       border-radius: 12px;
-      padding: 1.75rem;
+      padding: 2rem;
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .info-card h3 {
-      font-size: 1.1rem;
+    .drive-card-icon {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
     }
 
-    .info-card h3 span {
-      font-size: 1.5rem;
+    .drive-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
-    .info-card ul {
+    .drive-card ul {
       list-style: none;
     }
 
-    .info-card li {
+    .drive-card li {
       padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       opacity: 0.9;
     }
 
-    .info-card li:last-child {
-      border-bottom: none;
+    .drive-card li::before {
+      content: '>';
+      color: var(--color-panthers-blue);
+      font-weight: bold;
     }
 
-    /* Pro Tips */
-    .tips-section {
-      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    /* Game Day */
+    .gameday-section {
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
     }
 
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .tip-card {
+    .gameday-card {
       background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-      border-left: 4px solid var(--color-accent);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      border-top: 6px solid var(--color-panthers-blue);
     }
 
-    .tip-card h4 {
-      font-size: 1rem;
+    .gameday-card h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .gameday-card .stadium {
+      font-size: 1.25rem;
+      color: var(--color-panthers-blue);
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--color-dark);
+      margin-bottom: 1.5rem;
     }
 
-    .tip-card p {
-      color: var(--color-gray);
+    .gameday-tips {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .gameday-tip {
+      background: var(--color-light);
+      padding: 1.25rem;
+      border-radius: 8px;
+    }
+
+    .gameday-tip h4 {
       font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--color-panthers-black);
+    }
+
+    .gameday-tip p {
+      font-size: 0.85rem;
+      color: var(--color-gray);
       margin: 0;
     }
 
     /* Footer */
     footer {
-      background: var(--color-dark);
+      background: var(--color-panthers-black);
       color: white;
       text-align: center;
       padding: 3rem 1.5rem;
@@ -434,11 +428,19 @@
       font-size: 0.875rem;
     }
 
+    .keep-pounding {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--color-panthers-blue);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero {
         min-height: auto;
-        padding: 6rem 0 4rem;
+        padding: 5rem 0 4rem;
       }
 
       .hero-content {
@@ -446,8 +448,12 @@
       }
 
       .hero-badge {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         padding: 0.4rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
       }
 
       .hero-subtitle {
@@ -467,16 +473,33 @@
         font-size: 0.7rem;
       }
 
-      .scroll-indicator {
-        display: none;
+      .panther-icon {
+        font-size: 3rem;
       }
 
       .section-header h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
       }
 
       .section-header p {
         font-size: 1rem;
+      }
+
+      .russell-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
+      }
+
+      .russell-photo {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+      }
+
+      .russell-info h3 {
+        font-size: 1.5rem;
       }
 
       .route-visual {
@@ -495,87 +518,35 @@
         display: none;
       }
 
-      .route-city-dot {
-        width: 20px;
-        height: 20px;
-        margin-bottom: 0.5rem;
-      }
-
-      .route-city-name {
-        font-size: 1.1rem;
-      }
-
       .route-middle {
         background: var(--color-light);
         padding: 1rem 1.5rem;
         border-radius: 8px;
         order: -1;
-        margin-bottom: 0.5rem;
       }
 
-      .route-middle-distance {
+      .drive-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .drive-card {
+        padding: 1.5rem;
+      }
+
+      .gameday-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .gameday-card h3 {
         font-size: 1.5rem;
       }
 
-      .travel-grid {
+      .gameday-tips {
         grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .travel-card {
-        padding: 1.5rem;
-        border-radius: 12px;
-      }
-
-      .travel-card-icon {
-        font-size: 2rem;
-      }
-
-      .travel-card-time {
-        font-size: 2rem;
-        margin: 0.75rem 0;
-      }
-
-      .travel-card-details {
-        font-size: 0.9rem;
-      }
-
-      .info-section {
-        padding: 3rem 0;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .info-card {
-        padding: 1.25rem;
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-      }
-
-      .info-card h3 {
-        font-size: 1rem;
-      }
-
-      .info-card li {
-        font-size: 0.9rem;
-        padding: 0.4rem 0;
-      }
-
-      .tips-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .tip-card {
-        padding: 1.25rem;
       }
 
       section {
-        padding: 2.5rem 0;
+        padding: 3rem 0;
       }
 
       footer {
@@ -609,9 +580,10 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <div class="hero-badge">South Carolina → North Carolina</div>
-      <h1>Charleston to Charlotte</h1>
-      <p class="hero-subtitle">Your complete guide to traveling between two of the South's most vibrant cities</p>
+      <div class="panther-icon">🐆</div>
+      <div class="hero-badge">Game Day Road Trip</div>
+      <h1>Russell's Drive to <span>Charlotte</span></h1>
+      <p class="hero-subtitle">From Charleston to Bank of America Stadium for the Panthers game</p>
 
       <div class="hero-stats">
         <div class="hero-stat">
@@ -620,19 +592,27 @@
         </div>
         <div class="hero-stat">
           <span class="hero-stat-number">3.5</span>
-          <div class="hero-stat-label">Hours Drive</div>
+          <div class="hero-stat-label">Hour Drive</div>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-number">I-77</span>
-          <div class="hero-stat-label">Main Route</div>
+          <span class="hero-stat-number">1</span>
+          <div class="hero-stat-label">Panthers Fan</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="scroll-indicator">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
+  <!-- Russell Section -->
+  <section class="russell-section">
+    <div class="container">
+      <div class="russell-card">
+        <img src="https://i.imgur.com/placeholder.jpg" alt="Russell" class="russell-photo" onerror="this.style.background='linear-gradient(135deg, #0085CA, #101820)'; this.style.display='flex'; this.alt='R';">
+        <div class="russell-info">
+          <h3>The Driver: Russell</h3>
+          <p class="subtitle">Charleston to Charlotte | Panthers Game Day</p>
+          <p>Making the 3.5 hour drive from Charleston up I-26 and I-77 to catch the Panthers at Bank of America Stadium. No flights, no buses—just Russell, his car, and the open road to Charlotte.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -648,8 +628,9 @@
           </div>
 
           <div class="route-middle">
+            <div class="route-middle-icon">🚗</div>
             <div class="route-middle-distance">209 mi</div>
-            <div class="route-middle-label">via I-26 W & I-77 N</div>
+            <div class="route-middle-label">I-26 W → I-77 N</div>
           </div>
 
           <div class="route-city">
@@ -662,123 +643,81 @@
     </div>
   </section>
 
-  <!-- Travel Options -->
-  <section>
+  <!-- Drive Details -->
+  <section class="drive-section">
     <div class="container">
       <div class="section-header">
-        <h2>How to Get There</h2>
-        <p>Choose your preferred mode of transportation based on your schedule and preferences</p>
+        <h2>The Drive</h2>
+        <p>Russell's route from Charleston to Bank of America Stadium</p>
       </div>
 
-      <div class="travel-grid">
-        <div class="travel-card">
-          <div class="travel-card-icon">🚗</div>
-          <h3>By Car</h3>
-          <div class="travel-card-time">3 - 3.5 hrs</div>
-          <ul class="travel-card-details">
-            <li>Most flexible option</li>
-            <li>No tolls on main route</li>
-            <li>Stop in Columbia halfway</li>
-            <li>Free parking available</li>
-          </ul>
-        </div>
-
-        <div class="travel-card">
-          <div class="travel-card-icon">✈️</div>
-          <h3>By Plane</h3>
-          <div class="travel-card-time">~1 hr flight</div>
-          <ul class="travel-card-details">
-            <li>Fastest travel time</li>
-            <li>Add 2-3 hrs for airports</li>
-            <li>American & United flights</li>
-            <li>Best for tight schedules</li>
-          </ul>
-        </div>
-
-        <div class="travel-card">
-          <div class="travel-card-icon">🚌</div>
-          <h3>By Bus</h3>
-          <div class="travel-card-time">4 - 5 hrs</div>
-          <ul class="travel-card-details">
-            <li>Most affordable option</li>
-            <li>Greyhound & FlixBus</li>
-            <li>WiFi on most buses</li>
-            <li>Relax and enjoy the ride</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Route Info -->
-  <section class="info-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Route Information</h2>
-        <p>Everything you need to know for a smooth journey</p>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h3><span>🛣️</span> The Route</h3>
+      <div class="drive-grid">
+        <div class="drive-card">
+          <div class="drive-card-icon">🛣️</div>
+          <h3>The Route</h3>
           <ul>
-            <li>Take I-26 West from Charleston</li>
-            <li>Merge onto I-77 North at Columbia</li>
-            <li>Continue to Charlotte</li>
-            <li>Total: ~209 miles</li>
+            <li>Head out of Charleston on I-26 West</li>
+            <li>Pass through Columbia (~1.5 hrs)</li>
+            <li>Merge onto I-77 North</li>
+            <li>Straight shot into Charlotte</li>
           </ul>
         </div>
 
-        <div class="info-card">
-          <h3><span>⛽</span> Fuel & Stops</h3>
+        <div class="drive-card">
+          <div class="drive-card-icon">⏱️</div>
+          <h3>Timing</h3>
           <ul>
-            <li>Gas cheaper in South Carolina</li>
-            <li>Fill up before crossing state line</li>
+            <li>Total drive: 3 - 3.5 hours</li>
+            <li>Leave early to avoid traffic</li>
+            <li>I-77 gets busy near Charlotte</li>
+            <li>Game day = extra congestion</li>
+          </ul>
+        </div>
+
+        <div class="drive-card">
+          <div class="drive-card-icon">⛽</div>
+          <h3>Pit Stops</h3>
+          <ul>
+            <li>Fill up in SC (cheaper gas)</li>
+            <li>Columbia good for food break</li>
             <li>Rest stops along I-77</li>
-            <li>Columbia good for food breaks</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3><span>🚦</span> Traffic Patterns</h3>
-          <ul>
-            <li>Charlotte rush: 7-9 AM, 4-7 PM</li>
-            <li>Friday afternoons busiest</li>
-            <li>Sunday evenings moderate</li>
-            <li>I-77 near Charlotte congested</li>
+            <li>Top off before stadium area</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pro Tips -->
-  <section class="tips-section">
+  <!-- Game Day Section -->
+  <section class="gameday-section">
     <div class="container">
       <div class="section-header">
-        <h2>Pro Tips</h2>
-        <p>Insider knowledge for the best travel experience</p>
+        <h2>Game Day</h2>
+        <p>Panthers football at Bank of America Stadium</p>
       </div>
 
-      <div class="tips-grid">
-        <div class="tip-card">
-          <h4>Best Time to Leave</h4>
-          <p>Depart mid-morning (9-10 AM) to avoid both cities' rush hours and arrive before evening traffic.</p>
-        </div>
+      <div class="gameday-card">
+        <h3>🏈 Bank of America Stadium</h3>
+        <p class="stadium">800 S Mint St, Charlotte, NC</p>
+        <p>Russell's destination—home of the Carolina Panthers. After the 3.5 hour drive from Charleston, it's time for some football.</p>
 
-        <div class="tip-card">
-          <h4>Save on Gas</h4>
-          <p>South Carolina gas is typically $0.20-0.30 cheaper per gallon. Fill up before the NC border.</p>
-        </div>
-
-        <div class="tip-card">
-          <h4>Halfway Stop</h4>
-          <p>Columbia (1.5 hrs in) is perfect for a break. Try the Vista district for food and coffee.</p>
-        </div>
-
-        <div class="tip-card">
-          <h4>Avoid Friday PM</h4>
-          <p>Friday 3-7 PM is the worst time to leave Charleston. Add 30-60 minutes to your trip.</p>
+        <div class="gameday-tips">
+          <div class="gameday-tip">
+            <h4>Parking</h4>
+            <p>Arrive 2-3 hours early for best parking. Lots fill up fast on game day.</p>
+          </div>
+          <div class="gameday-tip">
+            <h4>Tailgating</h4>
+            <p>Lots open 4 hours before kickoff. Bring your grill and Panthers gear.</p>
+          </div>
+          <div class="gameday-tip">
+            <h4>After the Game</h4>
+            <p>Expect 30-45 min to get out of the parking area. Patience is key.</p>
+          </div>
+          <div class="gameday-tip">
+            <h4>The Drive Back</h4>
+            <p>Another 3.5 hours home. Worth it to see the Panthers play.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -787,7 +726,8 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>Travel times are estimates and may vary based on traffic, weather, and road conditions.</p>
+      <p class="keep-pounding">Keep Pounding</p>
+      <p>Safe travels, Russell. Go Panthers.</p>
     </div>
   </footer>
 </body>
